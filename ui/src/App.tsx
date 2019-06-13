@@ -36,7 +36,6 @@ class App extends React.Component<any, IState> {
           ]}
           layout={{ title: 'A Fancy Plot', yaxis: { range: [0, 1000] }, plot_bgcolor: '#222', paper_bgcolor: "#222", xaxis: {} }}
         />
-        );
       </div>
     );
   }
