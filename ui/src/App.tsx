@@ -7,6 +7,8 @@ import { CMajorFrequencies, CMajorNotes } from './notes';
 
 interface IState {
   pitches: number[]
+  startFrequency: number
+  endFrequency: number
 }
 
 class App extends React.Component<any, IState> {
@@ -19,11 +21,16 @@ class App extends React.Component<any, IState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      pitches: Array(250).fill(-10)
+      pitches: Array(250).fill(-10),
+      startFrequency: 0,
+      endFrequency: 1000
     }
     this.clicked = this.clicked.bind(this);
     this.handleNewPitch = this.handleNewPitch.bind(this);
     this.handleStream = this.handleStream.bind(this);
+    this.handleChangeStartFrequency = this.handleChangeStartFrequency.bind(this)
+    this.handleChangeEndFrequency = this.handleChangeEndFrequency.bind(this)
+
   }
 
   public render() {
@@ -59,12 +66,12 @@ class App extends React.Component<any, IState> {
           layout={{
             height: 700,
             showlegend: false,
-            yaxis: { range: [0, 1000], title: "Hz", color: 'white' },
+            yaxis: { range: [this.state.startFrequency, this.state.endFrequency], title: "Hz", color: 'white' },
             plot_bgcolor: '#222',
             paper_bgcolor: "#222",
             xaxis: { showticklabels: false, color: 'white' },
             yaxis2: {
-              range: [0, 1000],
+              range: [this.state.startFrequency, this.state.endFrequency],
               side: "right" as any,
               title: 'Note',
               zeroline: false,
@@ -75,8 +82,26 @@ class App extends React.Component<any, IState> {
           }}
           config={{ staticPlot: true, }}
         />
+
+        <h3 style={{ color: 'white' }}>Options</h3>
+        <label style={{ marginRight: 10, color: 'white' }}>
+          Start Frequency:
+          <input type="text" value={this.state.startFrequency} onChange={this.handleChangeStartFrequency} />
+        </label>
+        <label style={{ marginRight: 10, color: 'white' }}>
+          End Frequency:
+          <input type="text" value={this.state.endFrequency} onChange={this.handleChangeEndFrequency} />
+        </label>
       </div>
     );
+  }
+
+  private handleChangeStartFrequency(event: any) {
+    this.setState({ startFrequency: event.target.value })
+  }
+
+  private handleChangeEndFrequency(event: any) {
+    this.setState({ endFrequency: event.target.value })
   }
 
   private handleNewPitch(pitch: number) {
