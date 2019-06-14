@@ -161,6 +161,7 @@ class App extends React.Component<any, IState> {
           </div>
 
           <h3 style={{ color: 'white' }}>Made by <a href="https://legdaytech.com/" target="_blank">Mark Halonen</a></h3>
+          <h3 style={{ color: 'white' }}><a href="https://github.com/markhalonen/pitchgrapher" target="_blank">Source</a></h3>
 
 
 
@@ -204,6 +205,9 @@ class App extends React.Component<any, IState> {
 
     const buflen = 1024;
     this.buf = new Float32Array(buflen);
+
+    // @ts-ignore
+    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     try {
       navigator.getUserMedia({ "audio": true }, (stream) => {
