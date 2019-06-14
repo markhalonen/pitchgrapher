@@ -81,7 +81,7 @@ class App extends React.Component<any, IState> {
     return (
       <div className="App">
         <div>
-          <h3 style={{ color: 'white' }}>This app listens with the microphone and graphs the pitch over time</h3>
+          <h3 style={{ color: 'white' }}>Pitch Grapher listens with the microphone and graphs the pitch over time</h3>
         </div>
         <div>
           <button
@@ -97,7 +97,6 @@ class App extends React.Component<any, IState> {
               x: [],
               y: [],
               yaxis: 'y',
-              showlegend: false
             },
             ...this.state.pitchDetectors.filter(p => p.enabled).map(p => ({
               labels: [],
