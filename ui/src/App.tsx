@@ -156,11 +156,12 @@ class App extends React.Component<any, IState> {
                   <input type="checkbox" checked={p.enabled} onChange={this.handleCheckChanged(p)} />
                 </label>
               </div>))}
+              <p style={{ color: 'white' }}>Pitch detection methods courtesy of <a href="https://github.com/peterkhayes/pitchfinder" target="_blank">pitchfinder</a></p>
             </div>
             <div />
           </div>
 
-
+          <h3 style={{ color: 'white' }}>Made by <a href="https://legdaytech.com/" target="_blank">Mark Halonen</a></h3>
 
 
 
