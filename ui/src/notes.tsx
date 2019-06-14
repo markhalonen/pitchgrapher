@@ -24,6 +24,4 @@ frequencies.forEach((f, idx) => {
     }
 })
 
-console.log(CMajorNotes)
-
 export { CMajorNotes, CMajorFrequencies }
