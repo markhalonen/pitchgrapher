@@ -110,7 +110,8 @@ class App extends React.Component<any, IState> {
 
           ]}
           layout={{
-            height: 700,
+            height: window.innerHeight * .9,
+            width: window.innerWidth * .9 > 900 ? 900 : window.innerWidth * .9,
             yaxis: { range: [this.state.startFrequency, this.state.endFrequency], title: "Hz", color: 'white' },
             plot_bgcolor: '#222',
             paper_bgcolor: "#222",
