@@ -3,6 +3,9 @@ import './App.css';
 import Plot from 'react-plotly.js';
 import Pitchfinder from "pitchfinder";
 import { CMajorFrequencies, CMajorNotes } from './notes';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-94002757-7');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 
 interface IState {
